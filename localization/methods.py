@@ -1,7 +1,7 @@
 import numpy as num
-import geometry as gx
+from . import geometry as gx
 from scipy.optimize import minimize,fmin_cobyla
-from .find_centroid import maxPol
+from . import find_centroid.maxPol as maxPol
 
 class cornerCases(Exception):
     def __init__(self, value):
