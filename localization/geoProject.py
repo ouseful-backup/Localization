@@ -30,7 +30,7 @@ class Project:
 	def add_target(self,ID=None):
 		try:
 			self.TargetDic[ID]
-			print 'Target with same ID already exists'
+			print('Target with same ID already exists')
 			return
 		except:
 			self.nt=self.nt+1
