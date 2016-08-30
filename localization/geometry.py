@@ -168,7 +168,7 @@ class point:
 			elif l==3:
 				z=argv[2]
 			else:
-				raise geoError, 'Input'
+				raise Input(geoError)
 			self.x=float(argv[0])
 			self.y=float(argv[1])
 			self.z=z
@@ -386,7 +386,7 @@ class vec:
 		b=self.dy
 		c=self.dz
 		if self.mag()<res:
-			raise geoError, 'ZeroEntity'
+			raise ZeroEntity(geoError)
 		if (abs(a)<res and abs(b)<res):
 			return (vec(0,0,1),vec(0,1,0),vec(1,0,0))
 		elif (abs(a)<res and abs(c)<res):
@@ -528,7 +528,7 @@ class line:
 				elif self.kind=='Vertical' and L.kind=='Horizental':
 					return point(self.b,L.b)
 				else:
-					raise geoError,'Unknown'
+					raise Unknown(geoError)
 		else:
 			p=L.c
 			x0=p.x
@@ -599,7 +599,7 @@ class Triangle:
 		z=L[-1]
 		L=line(x,y)
 		if L.side(z)==0:
-			raise geoError, 'Degenerate'
+			raise Degenerate(geoError)
 		self.a=x
 		self.b=y
 		self.c=z
@@ -669,7 +669,7 @@ class Sphere:
 		r=S.R
 		d=self.c.dist(S.c)
 		if d > (R+r):
-			raise geoError, 'Disjoint'
+			raise Disjoint(geoError)
 		ex1=vec(S.c-self.c)
 		ex,ey,ez=ex1.floor()
 		x=(d**2-r**2+R**2)/(2*d)
@@ -726,7 +726,7 @@ class Polygon:
 			self.L=L
 			self.n=len(L)
 		else:
-			raise geoError, 'open'
+			raise NameError(geoError)
 
 	def area(self):
 		s=0
@@ -911,8 +911,8 @@ class ndisc:
 				pc=self.intersect(ray)
 				pll.append(pc)
 			except geoError:
-				print 'Unknown Error in ray-ndisc intersection'
-				raise geoError, 'Unknown'
+				print('Unknown Error in ray-ndisc intersection')
+				raise Unknown{geoError}
 		pll[-1]=pll[0]
 		return pll
 		
