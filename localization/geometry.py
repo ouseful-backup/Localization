@@ -90,12 +90,12 @@ def circles_intersect(sA):
 	sA=uni_obj(sA)
 	l=len(sA)
 	if l<3:
-		raise geoError,'InputError'
+		raise InputError(geoError)
 	#Checking disjoint case
 	for i in range(0,l-1):
 		for j in range(i+1,l):
 			if (sA[i].c.dist(sA[j].c) >  (sA[i].r+sA[j].r)):
-				raise geoError, 'Disjoint'
+				raise Disjoint(geoError)
 	p1,p2=circle_intersect(sA[0],sA[1])
 	p3,p4=circle_intersect(sA[2],sA[1])
 	if p1.dist(p3)<res or p1.dist(p4)<res:
