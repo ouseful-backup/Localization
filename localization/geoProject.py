@@ -62,9 +62,9 @@ class Project:
 					tar.loc=mx.lse(cA,mode=self.mode,cons=True)
 				except mx.cornerCases as cc:
 					if cc.tag=='Disjoint':
-						print tar.ID+' could not be localized by LSE_GC'
+						print('{} could not be localized by LSE_GC'.format(tar.ID))
 					else:
-						print 'Unknown Error in localizing '+tar.ID
+						print('Unknown Error in localizing {}'.format(tar.ID))
 			elif self.solver=='CCA':
 				if not self.detail:
 					tar.loc,n=mx.CCA(cA,mode=self.mode,detail=False)
