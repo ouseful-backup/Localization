@@ -17,7 +17,7 @@ def Norm(x,y,mode='2D'):
 	elif mode=='Earth1':
 		return gx.E.gcd(x[0],x[1],y[0],y[1])
 	else:
-		raise cornerCases, 'Unknown'
+		raise Unknown(cornerCases)
 
 def sum_error(x,c,r,mode):
 	l=len(c)
@@ -56,7 +56,8 @@ def lse(cA,mode='2D',cons=True):
 	elif mode=='3D':
 		x0=num.array([p0.x,p0.y,p0.z])
 	else:
-		raise cornerCases, 'Mode not supported:'+mode
+		print('Mode unknown...: {}".format(mode))
+		raise Unknown(cornerCases)
 	if mode=='Earth1':
 		fg1=1
 	else:
@@ -72,7 +73,7 @@ def lse(cA,mode='2D',cons=True):
 			res = fmin_cobyla(sum_error, x0,cL,args=(c,r,mode),consargs=(),rhoend = 1e-5)
 			ans=res
 		else:
-			raise cornerCases, 'Disjoint'
+			raise Disjoint(cornerCases)
 	else:
 		print('LSE Geolocating...')
 		res = minimize(sum_error, x0, args=(c,r,mode), method='BFGS')
@@ -85,9 +86,9 @@ def CCA(cA,mode='2D',detail=False):
 	elif mode=='Earth1':
 		from shapely_earth1 import polygonize
 	else:
-		print """The combination of centroid method and
-		your selected mode does not exist"""
-		raise cornerCases, 'InputError'
+		print("""The combination of centroid method and
+		your selected mode does not exist""")
+		raise InputError(cornerCases)
 	P=polygonize([xx.c for xx in cA],[xx.r for xx in cA])
 	area,n=maxPol(P)
 	ans1=area.centroid
