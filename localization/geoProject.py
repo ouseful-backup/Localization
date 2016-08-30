@@ -1,6 +1,6 @@
-import geoInterface as gx
-import geometry as gm
-import methods as mx
+import .geoInterface as gx
+import .geometry as gm
+import .methods as mx
 
 class Project:
 	def __init__(self,mode='2D',solver='LSE',detail=False):
