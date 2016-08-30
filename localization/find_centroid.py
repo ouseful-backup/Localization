@@ -96,7 +96,7 @@ def maxPol(P):
 			continue
 	if ni>0:
 		return (P,ni)
-	raise geoError,'UnKnown'
+	raise Unknown(geoError)
 
 			
 			
