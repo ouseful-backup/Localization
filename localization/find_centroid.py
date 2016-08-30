@@ -62,7 +62,7 @@ def checkCan(P,can):
 				try:
 					C=C.intersection(P[j])
 				except:
-					print '(!)Warning: in checkCan'
+					print('(!)Warning: in checkCan')
 			else:
 				fg=True
 				break
