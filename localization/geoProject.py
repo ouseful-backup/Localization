@@ -20,7 +20,7 @@ class Project:
 	def add_anchor(self,ID,loc):
 		try:
 			self.AnchorDic[ID]
-			print str(ID)+':Anchor with same ID already exists'
+			print(':Anchor with same ID already exists'.format(str(ID)))
 			return
 		except KeyError:
 			a=gx.Anchor(ID,gm.point(loc))
