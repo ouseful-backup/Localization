@@ -1,7 +1,7 @@
 import numpy as num
 from . import geometry as gx
 from scipy.optimize import minimize,fmin_cobyla
-from . import find_centroid.maxPol as maxPol
+from . import find_centroid
 
 class cornerCases(Exception):
     def __init__(self, value):
@@ -90,7 +90,7 @@ def CCA(cA,mode='2D',detail=False):
 		your selected mode does not exist""")
 		raise InputError(cornerCases)
 	P=polygonize([xx.c for xx in cA],[xx.r for xx in cA])
-	area,n=maxPol(P)
+	area,n=find_centroid.maxPol(P)
 	ans1=area.centroid
 	ans=gx.point(ans1.x,ans1.y)
 	if detail:
