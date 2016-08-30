@@ -912,7 +912,7 @@ class ndisc:
 				pll.append(pc)
 			except geoError:
 				print('Unknown Error in ray-ndisc intersection')
-				raise Unknown{geoError}
+				raise Unknown(geoError)
 		pll[-1]=pll[0]
 		return pll
 		
