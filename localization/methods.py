@@ -62,7 +62,7 @@ def lse(cA,mode='2D',cons=True):
 	else:
 		fg1=0
 	if cons:
-		print 'GC-LSE geolocating...'
+		print('GC-LSE geolocating...')
 		if not is_disjoint(cA,fg=fg1):
 			cL=[]
 			for q in range(l):
@@ -74,7 +74,7 @@ def lse(cA,mode='2D',cons=True):
 		else:
 			raise cornerCases, 'Disjoint'
 	else:
-		print 'LSE Geolocating...'
+		print('LSE Geolocating...')
 		res = minimize(sum_error, x0, args=(c,r,mode), method='BFGS')
 		ans=res.x
 	return gx.point(ans)
