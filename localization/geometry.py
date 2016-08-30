@@ -777,7 +777,7 @@ class Ray:
 				a1=self.c.angle(p[0])
 				a2=self.c.angle(p[1])
 				if abs(a1-a2) < res:
-					print 'hey'
+					print('hey')
 					if p[0].dist(self.c)> p[1].dist(self.c):
 						return [p[1],p[0]]
 					else:
