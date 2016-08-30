@@ -82,14 +82,16 @@ def lse(cA,mode='2D',cons=True):
 	
 def CCA(cA,mode='2D',detail=False):
 	if mode=='2D':
-		from shapely_2D import polygonize
+		from . import shapely_2D
+		P=shapely_2D.polygonize([xx.c for xx in cA],[xx.r for xx in cA])
 	elif mode=='Earth1':
-		from shapely_earth1 import polygonize
+		from . import shapely_earth1
+		P=shapely_earth1.polygonize([xx.c for xx in cA],[xx.r for xx in cA])
 	else:
 		print("""The combination of centroid method and
 		your selected mode does not exist""")
 		raise InputError(cornerCases)
-	P=polygonize([xx.c for xx in cA],[xx.r for xx in cA])
+	#P=polygonize([xx.c for xx in cA],[xx.r for xx in cA])
 	area,n=find_centroid.maxPol(P)
 	ans1=area.centroid
 	ans=gx.point(ans1.x,ans1.y)
