@@ -459,7 +459,7 @@ class line:
 	def __init__(self,x,y):
 		if isinstance(x,point) and isinstance(y,point):
 			if x==y:
-				raise geoError, 'Degenerate'
+				raise Degenerate(geoError)
 			try:
 				temp=(x.y-y.y)/(x.x-y.x)
 				if temp==0:
@@ -505,7 +505,7 @@ class line:
 	def intersect(self,L):
 		if isinstance(L,line):
 			if self.m==L.m:
-				raise geoError,'parellel'
+				raise ValueError(geoError)
 			else:
 				if self.kind=='Normal' and L.kind=='Normal':
 					x=(self.b-L.b)/(L.m-self.m)
