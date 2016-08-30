@@ -1,4 +1,4 @@
-import geometry as gx
+import .geometry as gx
 from shapely.geometry import Polygon,Point,MultiPolygon
 
 """ 2D shapely polygon models for circles"""
