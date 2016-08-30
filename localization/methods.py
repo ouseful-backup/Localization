@@ -56,7 +56,7 @@ def lse(cA,mode='2D',cons=True):
 	elif mode=='3D':
 		x0=num.array([p0.x,p0.y,p0.z])
 	else:
-		print('Mode unknown...: {}".format(mode))
+		print('Mode unknown...: {}'.format(mode))
 		raise Unknown(cornerCases)
 	if mode=='Earth1':
 		fg1=1
