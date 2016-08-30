@@ -846,12 +846,12 @@ class ndisc:
 		pll=[]
 		cA=self.cA
 		if len(cA)==0:
-			raise geoError, 'InputError'
+			raise InputError(geoError)
 		elif len(cA)==1:
 			return cA[0].to_poly(step)
 
 		if self.is_disjoint():
-			raise geoError, 'Disjoint'
+			raise Disjoint(geoError)
 		self.sort()
 		cA=self.cA
 		st=False
